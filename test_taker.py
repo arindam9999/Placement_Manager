@@ -39,6 +39,10 @@ class PlacementManager:
         if 'total_upsolve_sessions' not in self.data:
             self.data['total_upsolve_sessions'] = 0
             dump_flag = True
+        
+        if 'total_time_spent' not in self.data:
+            self.data['total_time_spent'] = 0
+            dump_flag = True
 
         if curr_date not in self.data: 
             self.data.update({
@@ -63,12 +67,18 @@ class PlacementManager:
     
     def update_database(self, contest_info):
         curr_date = strftime("%d-%m-%Y", gmtime())
-        self.data[curr_date]['contests'].append(contest_info)
-        self.data[curr_date]['total_contests_taken_today'] = self.total_contests_taken_today + 1
+        if contest_info['event_type'] == "contest":
+            del contest_info['event_type']
+            self.data[curr_date]['contests'].append(contest_info)
+            self.data['total_contests_attended'] += 1
+            self.data[curr_date]['total_contests_taken_today'] = self.total_contests_taken_today + 1
+        else:
+            del contest_info['event_type']
+            self.data[curr_date]['upsolve_sessions'].append(contest_info)
+            self.data['total_upsolve_sessions'] += 1
         self.data[curr_date]['total_problems_solved_today'] = self.total_problems_solved_today + contest_info['problems_solved']
         self.data['total_problems_solved'] += contest_info['problems_solved']
-        self.data['total_contests_attended'] += 1
-        self.data['total_upsolve_sessions'] += 1
+        self.data['total_time_spent'] += int(contest_info['contest_duration'])
 
         with open('data.json', 'w') as handle:
             print(json.dumps(self.data, indent=4, sort_keys=True), file = handle)
@@ -90,12 +100,12 @@ class PlacementManager:
         )
         self.load_data()
         self.update_database(contest_info) 
-        print("Great! We have saved your data.\nYou can start also do upsolving sessions "
+        print("Great! We have saved your data.\nYou can also do upsolving sessions "
         "using 'upsolve' command or quit using 'quit' command.")
 
     def get_contest_start_info(self, parsed_command):
-        duration = self.default_duration
-        problems = self.default_problems
+        duration = self.default_duration[parsed_command[0]]
+        problems = self.default_problems[parsed_command[0]]
         if len(parsed_command) > 1:
             duration = parsed_command[1]
         if len(parsed_command) > 2:
@@ -112,6 +122,7 @@ class PlacementManager:
 
     def contest(self, parsed_command):
         contest_info = self.get_contest_start_info(parsed_command)
+        contest_info['event_type'] = parsed_command[0]
         start_time = datetime.now().replace(microsecond=0)
         flag = False
         duration = int(contest_info['duration'])
@@ -120,7 +131,7 @@ class PlacementManager:
         ten_min_flag = True
         thirty_min_flag = True
         while  start_time + timedelta(minutes = duration) > datetime.now():
-            if start_time + timedelta(minutes = duration - 60) == datetime.now().replace(microsecond=0) and sixty_min_flag:
+            if duration >= 120 and start_time + timedelta(minutes = duration - 60) == datetime.now().replace(microsecond=0) and sixty_min_flag:
                 print("1 hour left! SPEED UP!!")
                 playsound("./media/sound_sample/notification_sound.wav")
                 sixty_min_flag = False
@@ -134,9 +145,9 @@ class PlacementManager:
                 ten_min_flag = False
             if keyboard.is_pressed('ESC'):
                 flag = True
-                print("Contest finished!")
                 contest_duration = (datetime.now() - start_time)
                 contest_duration = contest_duration.total_seconds()//60
+                print(f"Contest finished in {contest_duration} mins!")
                 self.save_data(contest_info, contest_duration)
                 break
 
@@ -144,6 +155,14 @@ class PlacementManager:
             return
         print("Time finished!!")
         self.save_data(contest_info, contest_info['duration'])
+
+    def statistics(self):
+        self.load_data()
+        curr_date = strftime("%d-%m-%Y", gmtime())
+        print("Problems solved in total are: ", self.data['total_problems_solved'])
+        print("Problems left to meet daily goal: ", self.problems_goal - self.data[curr_date]['total_problems_solved_today'])
+        print("Total Contests Left today: ", self.default_goal - self.data[curr_date]['total_contests_taken_today'])
+        print("Avg time taken per sum: ",round(self.data['total_problems_solved']/self.data['total_time_spent'], 1), "mins")
 
     def start_app(self):
         while True:
@@ -155,14 +174,24 @@ class PlacementManager:
 
             if parsed_command[0] == "contest":
                 self.contest(parsed_command)
+            elif parsed_command[0] == "upsolve":
+                self.contest(parsed_command)
+            elif parsed_command[0] == "stats":
+                self.statistics()
             else:
                 print("Error!! No such command exist please try again")
 
         return True
 
     def __init__(self):
-        self.default_duration = 120
-        self.default_problems = 6
+        self.default_duration = {
+            'contest':120,
+            'upsolve': 60,
+        }
+        self.default_problems = {
+            'contest':6,
+            'upsolve':2,
+        }
         self.default_goal = 5
         self.problems_goal = 30
         self.app_starter = True
