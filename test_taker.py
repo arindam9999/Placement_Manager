@@ -120,12 +120,19 @@ class PlacementManager:
         }
         return contest_info
 
+    def play_audio(self):
+        try:
+            playsound("./media/sound_sample/notification_sound.wav")
+        except:
+            pass
+
     def contest(self, parsed_command):
         contest_info = self.get_contest_start_info(parsed_command)
         contest_info['event_type'] = parsed_command[0]
         start_time = datetime.now().replace(microsecond=0)
         flag = False
         duration = int(contest_info['duration'])
+        self.play_audio()
         print("Contest has started!!!!!")
         sixty_min_flag = True
         ten_min_flag = True
@@ -133,26 +140,28 @@ class PlacementManager:
         while  start_time + timedelta(minutes = duration) > datetime.now():
             if duration >= 120 and start_time + timedelta(minutes = duration - 60) == datetime.now().replace(microsecond=0) and sixty_min_flag:
                 print("1 hour left! SPEED UP!!")
-                playsound("./media/sound_sample/notification_sound.wav")
+                self.play_audio()
                 sixty_min_flag = False
             if start_time + timedelta(minutes = duration - 30) == datetime.now().replace(microsecond=0) and thirty_min_flag:
                 print("30 mins left! BUCKLE UP!!")
-                playsound("./media/sound_sample/notification_sound.wav")
+                self.play_audio()
                 thirty_min_flag = False
             if start_time + timedelta(minutes = duration - 10) == datetime.now().replace(microsecond=0) and ten_min_flag:
                 print("10 mins left! FINISH UP!!")
-                playsound("./media/sound_sample/notification_sound.wav")
+                self.play_audio()
                 ten_min_flag = False
             if keyboard.is_pressed('ESC'):
                 flag = True
                 contest_duration = (datetime.now() - start_time)
                 contest_duration = contest_duration.total_seconds()//60
+                self.play_audio()
                 print(f"Contest finished in {contest_duration} mins!")
                 self.save_data(contest_info, contest_duration)
                 break
 
         if flag == True: 
             return
+        self.play_audio()
         print("Time finished!!")
         self.save_data(contest_info, contest_info['duration'])
 
