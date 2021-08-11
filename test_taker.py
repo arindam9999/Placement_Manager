@@ -133,7 +133,7 @@ class PlacementManager:
         flag = False
         duration = int(contest_info['duration'])
         self.play_audio()
-        print("Contest has started!!!!!")
+        print("Contest has started at ", strftime("%H:%M:%S", gmtime()))
         sixty_min_flag = True
         ten_min_flag = True
         thirty_min_flag = True
@@ -169,9 +169,17 @@ class PlacementManager:
         self.load_data()
         curr_date = strftime("%d-%m-%Y", gmtime())
         print("Problems solved in total are: ", self.data['total_problems_solved'])
-        print("Problems left to meet daily goal: ", self.problems_goal - self.data[curr_date]['total_problems_solved_today'])
-        print("Total Contests Left today: ", self.default_goal - self.data[curr_date]['total_contests_taken_today'])
-        print("Avg time taken per sum: ",round(self.data['total_problems_solved']/self.data['total_time_spent'], 1), "mins")
+        problems_left = self.problems_goal - self.data[curr_date]['total_problems_solved_today']
+        if problems_left > 0:
+            print("Problems left to meet daily goal: ", problems_left)
+        else:
+            print("Solved enough problems to meet daily goal!! Enjoy!!")
+        contest_left = self.default_goal - self.data[curr_date]['total_contests_taken_today']
+        if contest_left > 0:
+            print("Total Contests Left today: ", contest_left)
+        else:
+            print("No more contests left for today, daily goal achieved")
+        print("Avg time taken per sum: ",round(self.data['total_time_spent']/self.data['total_problems_solved'], 1), "mins")
 
     def start_app(self):
         while True:
