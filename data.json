@@ -87,8 +87,194 @@
             }
         ]
     },
-    "total_contests_attended": 5,
-    "total_problems_solved": 28,
-    "total_time_spent": 406,
-    "total_upsolve_sessions": 3
+    "12-08-2021": {
+        "contests": [
+            {
+                "contest_duration": 120,
+                "duration": 120,
+                "end_time": "03:29:22",
+                "problems": 6,
+                "problems_solved": 5,
+                "rating": 9,
+                "start_date": "12-08-2021",
+                "start_time": "01:29:22"
+            },
+            {
+                "contest_duration": 64.0,
+                "duration": 120,
+                "end_time": "05:17:57",
+                "problems": 6,
+                "problems_solved": 6,
+                "rating": 7,
+                "start_date": "12-08-2021",
+                "start_time": "04:13:56"
+            },
+            {
+                "contest_duration": 52.0,
+                "duration": 120,
+                "end_time": "07:17:51",
+                "problems": 6,
+                "problems_solved": 3,
+                "rating": 9,
+                "start_date": "12-08-2021",
+                "start_time": "06:25:31"
+            },
+            {
+                "contest_duration": 68.0,
+                "duration": 120,
+                "end_time": "14:13:53",
+                "problems": 6,
+                "problems_solved": 6,
+                "rating": 7,
+                "start_date": "12-08-2021",
+                "start_time": "13:05:31"
+            },
+            {
+                "contest_duration": 24.0,
+                "duration": 120,
+                "end_time": "16:14:23",
+                "problems": 6,
+                "problems_solved": 1,
+                "rating": 8,
+                "start_date": "12-08-2021",
+                "start_time": "15:49:56"
+            },
+            {
+                "contest_duration": 19.0,
+                "duration": 120,
+                "end_time": "17:11:18",
+                "problems": 6,
+                "problems_solved": 5,
+                "rating": 7,
+                "start_date": "12-08-2021",
+                "start_time": "16:52:07"
+            }
+        ],
+        "total_contests_taken_today": 6,
+        "total_problems_solved_today": 30,
+        "upsolve_sessions": [
+            {
+                "contest_duration": 12.0,
+                "duration": "30",
+                "end_time": "03:52:45",
+                "problems": "1",
+                "problems_solved": 1,
+                "rating": 8,
+                "start_date": "12-08-2021",
+                "start_time": "03:40:12"
+            },
+            {
+                "contest_duration": 22.0,
+                "duration": "120",
+                "end_time": "11:41:28",
+                "problems": "3",
+                "problems_solved": 1,
+                "rating": 9,
+                "start_date": "12-08-2021",
+                "start_time": "11:19:26"
+            },
+            {
+                "contest_duration": 58.0,
+                "duration": 60,
+                "end_time": "13:01:26",
+                "problems": 2,
+                "problems_solved": 2,
+                "rating": 9,
+                "start_date": "12-08-2021",
+                "start_time": "12:03:10"
+            },
+            {
+                "contest_duration": 55.0,
+                "duration": 60,
+                "end_time": "18:07:17",
+                "problems": 2,
+                "problems_solved": 0,
+                "rating": 9,
+                "start_date": "12-08-2021",
+                "start_time": "17:11:57"
+            }
+        ]
+    },
+    "13-08-2021": {
+        "contests": [
+            {
+                "contest_duration": 73.0,
+                "duration": 120,
+                "end_time": "02:53:27",
+                "problems": 6,
+                "problems_solved": 6,
+                "rating": 6,
+                "start_date": "13-08-2021",
+                "start_time": "01:39:44"
+            },
+            {
+                "contest_duration": 77.0,
+                "duration": 120,
+                "end_time": "04:28:50",
+                "problems": 6,
+                "problems_solved": 6,
+                "rating": 6,
+                "start_date": "13-08-2021",
+                "start_time": "03:11:20"
+            },
+            {
+                "contest_duration": 35.0,
+                "duration": 120,
+                "end_time": "05:45:40",
+                "problems": 6,
+                "problems_solved": 1,
+                "rating": 7,
+                "start_date": "13-08-2021",
+                "start_time": "05:10:28"
+            },
+            {
+                "contest_duration": 56.0,
+                "duration": 120,
+                "end_time": "14:51:28",
+                "problems": 6,
+                "problems_solved": 4,
+                "rating": 6,
+                "start_date": "13-08-2021",
+                "start_time": "13:54:53"
+            },
+            {
+                "contest_duration": 120,
+                "duration": 120,
+                "end_time": "17:32:04",
+                "problems": 6,
+                "problems_solved": 5,
+                "rating": 8,
+                "start_date": "13-08-2021",
+                "start_time": "15:32:04"
+            }
+        ],
+        "total_contests_taken_today": 5,
+        "total_problems_solved_today": 28,
+        "upsolve_sessions": [
+            {
+                "contest_duration": 107.0,
+                "duration": "120",
+                "end_time": "13:18:59",
+                "problems": "5",
+                "problems_solved": 5,
+                "rating": 9,
+                "start_date": "13-08-2021",
+                "start_time": "11:31:17"
+            },
+            {
+                "contest_duration": 21.0,
+                "duration": 60,
+                "end_time": "15:31:50",
+                "problems": 2,
+                "problems_solved": 1,
+                "rating": 8,
+                "start_date": "13-08-2021",
+                "start_time": "15:10:49"
+            }
+        ]
+    },
+    "total_contests_attended": 16,
+    "total_problems_solved": 86,
+    "total_time_spent": 1389,
+    "total_upsolve_sessions": 9
 }

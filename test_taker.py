@@ -1,6 +1,6 @@
 from datetime import date, time, datetime, timedelta
 import json
-from time import gmtime, strftime
+from time import gmtime, strftime, localtime
 import keyboard
 from playsound import playsound
 
@@ -133,7 +133,7 @@ class PlacementManager:
         flag = False
         duration = int(contest_info['duration'])
         self.play_audio()
-        print("Contest has started at ", strftime("%H:%M:%S", gmtime()))
+        print("Contest has started at ", strftime("%H:%M:%S", localtime()))
         sixty_min_flag = True
         ten_min_flag = True
         thirty_min_flag = True
