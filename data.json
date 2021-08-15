@@ -273,8 +273,51 @@
             }
         ]
     },
-    "total_contests_attended": 16,
-    "total_problems_solved": 86,
-    "total_time_spent": 1389,
+    "14-08-2021": {
+        "contests": [
+            {
+                "contest_duration": 65.0,
+                "duration": 120,
+                "end_time": "03:56:41",
+                "problems": 6,
+                "problems_solved": 6,
+                "rating": 7,
+                "start_date": "14-08-2021",
+                "start_time": "02:51:02"
+            },
+            {
+                "contest_duration": 98.0,
+                "duration": 120,
+                "end_time": "09:11:22",
+                "problems": 6,
+                "problems_solved": 4,
+                "rating": 7,
+                "start_date": "14-08-2021",
+                "start_time": "07:33:00"
+            },
+            {
+                "contest_duration": 70.0,
+                "duration": 120,
+                "end_time": "16:13:11",
+                "problems": 6,
+                "problems_solved": 2,
+                "rating": 8,
+                "start_date": "14-08-2021",
+                "start_time": "15:02:18"
+            }
+        ],
+        "total_contests_taken_today": 3,
+        "total_problems_solved_today": 12,
+        "upsolve_sessions": []
+    },
+    "15-08-2021": {
+        "contests": [],
+        "total_contests_taken_today": 0,
+        "total_problems_solved_today": 0,
+        "upsolve_sessions": []
+    },
+    "total_contests_attended": 19,
+    "total_problems_solved": 98,
+    "total_time_spent": 1622,
     "total_upsolve_sessions": 9
 }
