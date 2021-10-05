@@ -1,0 +1,14 @@
+Q1. There are elections in town. Each candidate has been voted. A[1…n] is the array where A[i] denotes the the number of votes for the the ith candidate. 
+This array A[] is sorted in descending order with ties broken by increasing indices. You can increase the votes for any candidate and also you have a desire 
+list for the candidate. Rank[1…n] denotes the rank of the candidate that you want the candidate to be in that position where -1 denotes you don’t care for him. 
+Find the minimum number of votes added by you to get the rank of the candidates as in Rank array. ^The question is not clear. Someone please state it properly.
+Eg. A[] = {10,8,6,4,3}    
+  	Rank = {0,2,1,3,-1} 
+Ans 3(Increase 6 to 9)
+Eg. A[] =  {100,40,15,15}
+ 	Rank[] = {0,1,3,2}
+Ans 1 (tie breaker case).b ner
+													Solution Approach..
+(We need to use the greedy approach for this question. make pairs of the ranks and vote array together based on increasing ranks, and then form the back side check
+for any possible changes like in first test case. after sorting arrays will be (0,10),(1,6),(2,8),(3,4), leaving negative case, now from back side condition will 
+be false between 1,6 and 2,8 so i will increase 6 to 9 and done)
